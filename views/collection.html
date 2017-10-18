@@ -1,0 +1,175 @@
+
+<!-- 容器：囊括所有的页面 page -->
+<div class="page-group">
+	<!-- 第三个页面 -->
+	<div class="page" id="collection">
+		<header class="bar bar-nav">
+			<!--<a class="button button-link button-nav pull-left back" data-transition='slide-out'>
+				<span class="icon icon-left"></span> 返回
+			</a>-->
+			<h1 class="title">收藏</h1>
+		</header>
+		<nav class="bar bar-tab">
+			<a class="tab-item" href="../index.html">
+				<span class="icon icon-home"></span>
+				<span class="tab-label">首页</span>
+				<span class="badge">99+</span>
+			</a>
+			<a class="tab-item" href="mine.html">
+				<span class="icon icon-me"></span>
+				<span class="tab-label">我</span>
+			</a>
+			<a class="tab-item active" href="#">
+				<span class="icon icon-star"></span>
+				<span class="tab-label">收藏</span>
+			</a>
+			<a class="tab-item" href="setting.html">
+				<span class="icon icon-settings"></span>
+				<span class="tab-label">设置</span>
+			</a>
+		</nav>
+		<div class="content">
+			<!-- 这里是页面内容区 -->
+			第三个页面
+			<div class="content-block text-center">表单</div>
+			<div class="list-block">
+			    <ul>
+				<!-- Text inputs -->
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-name"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">姓名</div>
+							<div class="item-input">
+								<input type="text" placeholder="Your name">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-email"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">邮箱</div>
+							<div class="item-input">
+								<input type="email" placeholder="E-mail">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-password"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">密码</div>
+							<div class="item-input">
+								<input type="password" placeholder="Password" class="">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-gender"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">性别</div>
+							<div class="item-input">
+								<select>
+									<option>Male</option>
+									<option>Female</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</li>
+				<!-- Date -->
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-calendar"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">生日</div>
+							<div class="item-input">
+								<input type="date" placeholder="Birth day" value="2014-04-30">
+							</div>
+						</div>
+					</div>
+				</li>
+				<!-- Switch (Checkbox) -->
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-toggle"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">开关</div>
+							<div class="item-input">
+								<label class="label-switch">
+			                <input type="checkbox" id="collection-switch">
+			                <div class="checkbox"></div>
+			              </label>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="align-top">
+					<div class="item-content">
+						<div class="item-media"><i class="icon icon-form-comment"></i></div>
+						<div class="item-inner">
+							<div class="item-title label">文本域</div>
+							<div class="item-input">
+								<textarea></textarea>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			</div>
+			<div class="content-block">
+				<div class="row">
+					<div class="col-50">
+						<a href="#" class="button button-big button-fill button-danger">取消</a>
+					</div>
+					<div class="col-50">
+						<a href="#" class="button button-big button-fill button-success collection-submit">提交</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		// 切换开关
+		$("#collection-switch").on("change",function(){
+			// alert：1.文本  2.标题  3.回调函数
+			// $.alert("操作成功"+$(this).attr("checked"));
+			// $.alert("操作成功"+$(this).prop("checked"));
+			// $.alert("操作成功"+$(this).prop("checked"),"标题",function(){
+			//	 $.alert("点击了确定！");
+			// });
+			
+			// confirm：1.文本  2.标题  3.确定的回调函数   4.取消的回调函数
+			// $.confirm("操作成功"+$(this).prop("checked"),"标题",function(){
+			//	 $.alert("点了确定");
+			// },function(){
+			//	 $.alert("点了取消");
+			// });
+			// 关于 modals 的更灵活的用法，就是自定义：m.sui.taobao.org/components/#modal
+			
+			// toast：1 提示信息  2 显示时间   3 额外的样式
+			$.toast("操作成功",1000,"success");
+		});
+		
+		// 提交
+		$("a.collection-submit").on("click",function(){
+			/*
+			$.showPreloader("正在发送中……");
+			// 获取数据框数据，拼接数据，发送后台
+			setTimeout(function(){
+				$.hidePreloader();
+			},2000);
+			*/
+			$.showIndicator();
+		    setTimeout(function (){
+		        $.hideIndicator();
+		    }, 2000);
+		});
+	</script>
+</div>

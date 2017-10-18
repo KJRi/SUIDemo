@@ -1,0 +1,77 @@
+
+<!-- 注意：这里采用的是路由跳转：先阻止 a 标签的默认事件，进而转化为网络请求，把请求页面
+	的 page-group 里面的数据，innerHTML 到首页的 page-group 里面 -->
+	
+<!-- 这里除了 page-group 里面的内容需要保留外，其他内容都可以删掉，对于页面跳转没有影响。但是，若想
+	单独在这个页面刷新，就会出现找不到 SUI 源码了，导致文件不能正常显示。（自己选择删还是不删）-->
+
+<!-- 容器：囊括所有的页面 page -->
+<div class="page-group">
+	<!-- 第二个页面 -->
+	<!-- 每一个 .page 容器都应该有一个全局唯一的id，路由器会使用
+	这个id作为唯一标示，如果没有设置id，可能会导致路由出错。 -->
+	<div class="page" id="mine">
+		<header class="bar bar-nav">
+			<!--<a class="button button-link button-nav pull-left back" data-transition='slide-out'>
+				<span class="icon icon-left"></span> 返回
+			</a>-->
+			<h1 class="title">我</h1>
+		</header>
+		<nav class="bar bar-tab">
+			<a class="tab-item" href="../index.html">
+				<span class="icon icon-home"></span>
+				<span class="tab-label">首页</span>
+				<span class="badge">99+</span>
+			</a>
+			<a class="tab-item active" href="#">
+				<span class="icon icon-me"></span>
+				<span class="tab-label">我</span>
+			</a>
+			<a class="tab-item" href="collection.html">
+				<span class="icon icon-star"></span>
+				<span class="tab-label">收藏</span>
+			</a>
+			<a class="tab-item" href="setting.html">
+				<span class="icon icon-settings"></span>
+				<span class="tab-label">设置</span>
+			</a>
+		</nav>
+		<div class="content">
+			<!-- 这里是页面内容区 -->
+			第二个页面
+			<br />
+			<a href="setting.html" external>
+				此链接跳转到第四个页面，不使用路由，走原生跳转
+			</a>
+			<br />
+			<a href="#mine2">点我去二级页面</a>
+		</div>
+	</div>
+	
+	<!-- 二级页面 -->
+	<div class="page" id="mine2">
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back" data-transition='slide-out'>
+				<span class="icon icon-left"></span> 返回
+			</a>
+			<h1 class="title">二级页面标题</h1>
+		</header>
+		<div class="content content-padded">
+			在这里布局二级页面
+			<br />
+			<!-- 我们对后退操作进行了封装，你只需要在任意链接上增加一个 .back 类，点击就会自动返回到上一页（调用 history.back） -->
+			<a class="back">后退</a>
+			<br />
+			<!-- 或者你可以通过调用 $.router.back() 来执行返回上一页操作。 -->
+			<button class="back button">后退</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$("#mine2 button.back").click(function(){
+			$.router.back();
+		});
+	</script>
+</div>
+
+		

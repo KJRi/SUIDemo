@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>我的生活</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="./images/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- 直接复制代码的话，这里是没有添加 http 协议的。可能导致文件加载失败。
+			解决办法：
+			1. 放到 HBuilder 里面（或者 Nodejs服务器里、IIS服务器里面）
+			2. 在前面加上 http:
+		-->
+		<link rel="stylesheet" href="dist/css/sm.css">
+		<link rel="stylesheet" href="dist/css/sm-extend.css">
+		<style type="text/css">
+			/* 关闭 SUI 跳转动画 */
+			*{
+				/*animation: none !important; 不会调用 pageInit 方法（不会调用动画完成的回调函数）*/
+				animation-duration: 0s !important;
+				/*animation-duration: 0.5s !important;*/
+			}
+			/* 这个堪称完美的解决方案在 Mac 系统的 Safari 上点第二个来回就完事 */
+			/* http://www.yyson.com/development/25.html */
+		</style>
+	</head>
+	<body>
+		<!-- 容器：囊括所有的页面 page -->
+		<div class="page-group">
+			<!-- 第一个页面 -->
+			<div class="page page-current" id="index">
+				<header class="bar bar-nav">
+					<!--<a class="button button-link button-nav pull-left back" data-transition='slide-out'>
+						<span class="icon icon-left"></span> 返回
+					</a>-->
+					<a class="button button-link button-nav pull-right open-panel">
+						<span class="icon icon-menu"></span>
+					</a>
+					<!--<h1 class="title">我的生活</h1>-->
+					<div class="buttons-row" style="width: 100px;margin: 0 auto;">
+						<a href="#" class="active button">消息</a>
+						<a href="#index2" class="button">电话</a>
+					</div>
+				</header>
+				<!-- 二级标题栏 -->
+				<div class="bar bar-header-secondary">
+				  	<div class="searchbar">
+					    <a class="searchbar-cancel">取消</a>
+					    <div class="search-input">
+					      	<label class="icon icon-search" for="search"></label>
+					      	<input type="search" id='search' placeholder='输入关键字...'/>
+					    </div>
+				  	</div>
+				</div>
+				<nav class="bar bar-tab">
+					<a class="tab-item active" href="#">
+						<span class="icon icon-home"></span>
+						<span class="tab-label">首页</span>
+						<!-- 气泡 -->
+						<span class="badge">99+</span>
+					</a>
+					<!-- 除了内联编写多个页面以外，你还可以通过ajax来加载新页面。
+						通过ajax加载新页面和普通的链接写法没有区别，路由器会
+						自动拦截链接的点击事件，并通过ajax请求加载新的页面。 -->
+					<a class="tab-item" href="views/mine.html">
+						<span class="icon icon-me"></span>
+						<span class="tab-label">我</span>
+					</a>
+					<!-- 默认地，对于加载过的页面，只要页面没刷新，那么再次进入该页面时，
+					都会优先读取缓存而不发送网络请求。如果需要强制请求，可以用下面两种方式：  
+					在 a 链接上添加 data-no-cache="true" 属性来标明点击该链接时不使用缓存，如：<a href="/detail" data-no-cache="true">no cache</a>
+					使用 js 方法 load 来加载时，把可选的参数 ignoreCache 设为 true，如：$.router.load('/detail', true) -->
+					<a class="tab-item" href="views/collection.html" data-no-cache="true">
+						<span class="icon icon-star"></span>
+						<span class="tab-label">收藏</span>
+					</a>
+					<a class="tab-item" href="views/setting.html">
+						<span class="icon icon-settings"></span>
+						<span class="tab-label">设置</span>
+					</a>
+				</nav>
+				<div class="content">
+					<!-- 这里是页面内容区 -->
+					<div class="page-index">
+						<div class="card">
+							<div style="background-image:url(./images/banner2.jpg); background-size: 100% 100%;" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+							<div class="card-content">
+								<div class="card-content-inner">
+									<p class="color-gray">发表于 2015/01/15</p>
+									<p> 小白兔蹦蹦跳跳到面包房，问：“老板，你们有没有一百个小面包啊？”
+										老板：“啊，真抱歉，没有那么多。”
+										“这样啊……”小白兔垂头丧气地走了。
+										第二天，小白兔蹦蹦跳跳到面包房，“老板，有没有一百个小面包啊？”
+										老板：“对不起，还是没有啊。”
+										“这样啊……”小白兔又垂头丧气地走了。
+										第三天，小白兔蹦蹦跳跳到面包房，“老板，有没有一百个小面包啊？”
+										老板高兴的说：“有了，有了，今天我们有一百个小面包了！！”
+										小白兔掏出钱：“太好了，我买两个！”
+									</p>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a href="#" class="link">赞</a>
+								<a href="#" class="link">更多</a>
+							</div>
+						</div>
+						<div class="card">
+							<div style="background-image:url(./images/banner1.jpg); background-size: 100% 100%;)" valign="bottom" class="card-header color-white no-border">旅途的山</div>
+							<div class="card-content">
+								<div class="card-content-inner">
+									<p class="color-gray">发表于 2015/01/15</p>
+									<p>做人，要做好人，好好做人，做优秀之人；做事，工作上求勤奋，结果上求卓越；做人，信仰上求高尚，行为上求自律；做事，要做好事，好好做事，做有益之事！</p>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a href="#" class="link">赞</a>
+								<a href="#" class="link">更多</a>
+							</div>
+						</div>
+						<div class="content-padded">
+							<p style="font-size: 0.8rem;">我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,
+							我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,
+							我的左右两边有留白,我的左右两边有留白,我的左右两边有留白,
+							我的左右两边有留白,我的左右两边有留白</p>
+							<!-- 如果开启路由：提示加载失败（控制台会报错：说不能跨域跨域请求） -->
+							<!-- 在不全局关闭路由的前提下想走正常页面跳转：class="external" 或者自定义属性 external -->
+							<!-- 在不全局关闭路由的前提下想走正常页面跳转：全局配置 routerFilter -->
+							<a href="http://www.baidu.com" class="notRouter">百度一下</a>
+							<a href="http://www.sina.com" class="notRouter">新浪</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 首页二级页面电话页面 -->
+			<div class="page" id="index2">
+				<header class="bar bar-nav">
+					<!-- class="open-panel" 负责打开的     data-panel="selector" 负责指定打开谁的  -->
+					<a class="button button-link button-nav pull-right open-panel" data-panel="#panel-left-demo">
+						<span class="icon icon-menu"></span>
+					</a>
+					<div class="buttons-row" style="width: 100px;margin: 0 auto;">
+						<a href="#index" class="button">消息</a>
+						<a href="#" class="active button">电话</a>
+					</div>
+				</header>
+				<!-- 二级标题栏 -->
+				<div class="bar bar-header-secondary">
+				  	<div class="searchbar">
+					    <a class="searchbar-cancel">取消</a>
+					    <div class="search-input">
+					      	<label class="icon icon-search" for="search"></label>
+					      	<input type="search" id='search' placeholder='输入关键字...'/>
+					    </div>
+				  	</div>
+				</div>
+				<nav class="bar bar-tab">
+					<a class="tab-item active" href="#">
+						<span class="icon icon-home"></span>
+						<span class="tab-label">首页</span>
+						<span class="badge">99+</span>
+					</a>
+					<a class="tab-item" href="views/mine.html">
+						<span class="icon icon-me"></span>
+						<span class="tab-label">我</span>
+					</a>
+					<a class="tab-item" href="views/collection.html" data-no-cache="true">
+						<span class="icon icon-star"></span>
+						<span class="tab-label">收藏</span>
+					</a>
+					<a class="tab-item" href="views/setting.html">
+						<span class="icon icon-settings"></span>
+						<span class="tab-label">设置</span>
+					</a>
+				</nav>
+				<div class="content">
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+					<p>首页二级页面--电话</p>
+				</div>
+			</div>
+				
+			<!-- 侧边栏 -->
+			<!-- 可以通过 .panel-left 或者 .panel-right 来指定侧栏是从左边还是右边出现。 -->
+			<!-- 可以通过 .panel-cover 或者 .panel-reveal 指定侧栏是覆盖在页面上还是推开页面。 -->
+			<div class="panel-overlay"></div>
+			<div class="panel panel-left panel-reveal theme-white" id='panel-left-demo'>
+				<div class="content-block">
+					<p>这是一个侧栏</p>
+					<p>你可以在这里放用户设置页面</p>
+					<p>
+						<a href="#" class="close-panel">关闭</a>
+					</p>
+				</div>
+				<div class="list-block">
+					<ul>
+					     <li><a href="#" class="item-link list-button icon icon-gift" style="text-align: left;">&#x3000;了解会员特权</a></li>
+					     <li><a href="#" class="item-link list-button icon icon-card" style="text-align: left;">&#x3000;QQ钱包</a></li>
+					     <li><a href="#" class="item-link list-button icon icon-emoji" style="text-align: left;">&#x3000;个性装扮</a></li>
+					     <li><a href="#" class="item-link list-button icon icon-cart" style="text-align: left;">&#x3000;我的收藏</a></li>
+					     <li><a href="#" class="item-link list-button icon icon-picture" style="text-align: left;">&#x3000;我的相册</a></li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+		
+		<script type='text/javascript' src='dist/js/zepto.js' charset='utf-8'></script>
+		<!-- 全局配置：写在引入 zepto 之后且在 引入 sm 之前 -->
+		<script type="text/javascript">
+			$.config = {
+				// 默认值 false
+				// 打开自动初始化页面的功能
+				// 建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+				// autoInit: true,
+				
+				// 默认值 true
+				// 在加载新页面过程中显示一个加载指示器。
+				showPageLoadingIndicator: true,
+				
+				// 默认值 true
+				// 默认启用MSUI内置的Router功能。如果想关闭此功能，在页面加载MSUI之前配置
+				// router: false,
+				
+				// 默认值 null
+				// 当前点击链接是否使用路由功能的自定义过滤器。
+				// 返回 false 表示不使用路由功能，返回 true 表示进入路由功能后续处理。
+				routerFilter: function($obj){
+					// 实参是当前点击的链接的 Zepto 对象（即 $('the-link'））
+					if ($obj.is("a.notRouter")) {
+						return false;
+					}
+					return true;
+				},
+				
+				// 默认值 left
+				// 是否可以通过左右滑动打开侧栏，一次只能指定一个方向。
+				swipePanel: "left",
+				
+				// 默认值 true
+				// 只允许滑动关闭侧栏，不允许滑动打开。
+				swipePanelOnlyClose: false
+			}
+		</script>
+		<script type='text/javascript' src='dist/js/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='dist/js/sm-extend.js' charset='utf-8'></script>
+	</body>
+</html>
+<!-- 前端 UI 开发框架 -->
+<!-- Bootstrap SUI WeUI MUI AppFrameWork Angular+Ionic Foundation -->
+<script type="text/javascript">
+	// 注意，必须执行初始化方法: $.init()。他会调用 $.initPage 方法初始化页面组件，并且触
+	// 发一个 pageInit 事件，所以请确保在所有的 pageInit 事件绑定之后再调用 $.init() 方法。
+	// $(document).on("pageInit","#index",function(event,pageId,$page){
+	//	 console.log(arguments);
+	// });
+	// $.init();
+	// 或者
+	window.onload = function(){
+		$(document).on("pageInit",function(event,pageId,$page){
+			if (pageId == "index") {
+				document.title = "首页";
+			} else if(pageId == "mine"){
+				document.title = "我";
+			}else if(pageId == "collection"){
+				document.title = "收藏";
+			}else if(pageId == "setting"){
+				document.title = "设置";
+			}
+		});
+		// 绑定完监听事件手动调用初始化方法（当然，这里全局配成自动初始化也可以）
+		// 总体来说：$.init()，哪里想用，哪里调用，用法方便灵活。
+		$.init();
+	}
+	
+	$(window).on("pageLoadStart",function(){
+		console.log("发送Ajax之前触发");
+	});
+	$(window).on("pageLoadComplete",function(){
+		console.log("Ajax 请求结束，无论是成功还是失败");
+	});
+	
+	// 侧栏打开或者关闭的时候，会在 .panel 上触发对应的事件。
+	$(".panel").on("open",function(){
+		console.log("打开动画开始之前触发。");
+	});
+	$(".panel").on("opened",function(){
+		console.log("打开动画结束之后触发。");
+	});
+	// close: 关闭动画开始之前触发。  closed: 关闭动画结束之后触发。
+	/*
+	// JS 打开侧边栏（两个页面想共用一个侧边栏，请写成内联样式）
+	$(".openPanel").click(function(){
+		$.openPanel("#panel-left-demo");
+		// 关闭
+		// $.closePanel("#panel-left-demo");
+	});*/
+	
+	$("a.link").on("click",function(){
+		// prompt：1 文本  2.标题  3.确定回调函数   4.取消回调函数
+		$.prompt("请输入账号","权限验证",function(test){
+			// 点了确定
+			$.alert("输入了:"+test);
+		},function(){
+			// 点了取消
+		});
+	});
+</script>
